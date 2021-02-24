@@ -13,10 +13,11 @@ df = df.reset_index(drop=True)
 df['HOSP_NEW'] = df['HOSP_YES'].diff()
 
 # setup labels
+df['SCAN'] = df['POS_NEW'].diff(periods=-1)
 df['INCREASE'] = -1
 df.loc[df['SCAN'] < 0, ['INCREASE']] = 1
 df.loc[df['SCAN'] >= 0, ['INCREASE']] = 0
-df[['HOSP_YES', 'HOSP_NEW', 'POS_NEW', 'SCAN', 'INCREASE']]
+
 df = df.iloc[20:]
 # df_filtered = df[["POS_NEW", "POS_7DAYAVG", "NEG_NEW", "NEG_7DAYAVG", "DTH_NEW", "DTH_7DAYAVG", "TEST_NEW", "TEST_7DAYAVG", "HOSP_NEW", "HOSP_NO_NEW", "HOSP_UNK_NEW", "POS_FEM_NEW", "POS_MALE_NEW", "INCREASE"]]
 df_filtered.drop(df.tail(1).index, inplace=True)
