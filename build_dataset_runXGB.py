@@ -26,7 +26,7 @@ df_filtered
 
 
 
-df_split = np.random.rand(len(df_filtered)) < 0.8
+df_split = np.random.rand(len(df_filtered)) < 0.8))
 df_training = df_filtered[df_split]
 df_testing = df_filtered[~df_split]
 df_training_y = df_training['INCREASE']
